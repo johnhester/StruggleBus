@@ -6,6 +6,8 @@ Basic Premise:
 2020 has been a rough year. for
 We all struggle from time to time (or all the time), but in our ‘bootstrap’ oriented society it can be very challenging to ask for help when you need it. StruggleBus gives users a path of least resistance for reaching out to those who care about them most. Users can send StruggleBus a one word text and a pre-defined message will be sent out to their emergency contact(s). With customizeable messages it could be as simple as letting someone know you're having a rough day or an urgent SOS call to let them know you're in distress.
 
+- [DbDiagram](https://github.com/johnhester/StruggleBus/blob/main/README.md)
+
 #### Disclaimer: In an Emergency situation you should always contact the appropriate authorities (911).
 
 
