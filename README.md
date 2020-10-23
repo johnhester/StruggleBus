@@ -26,7 +26,8 @@ We all struggle from time to time (or all the time), but in our ‘bootstrap’ 
 - Users can sign in and set their number and the number of a support contact
 - User can utilize default one word messages to sms StruggleBus from their mobile phone, triggering a lengthier response to their emergency contact from StruggleBus
 - User can customize their help messages and responses
-- Only the user can set & see their information
+- Only the user can set & see their personal message information
+- full CRUD on user messages
 
 
 ## Stretch Goals:
@@ -34,7 +35,6 @@ We all struggle from time to time (or all the time), but in our ‘bootstrap’ 
     1 - standard help message
     2 - danger: user needs immediate assistance
 - Admin account functionality
-    User permissions
 - A user can have multiple accountability buddies
 - friend functionality to allow users to support each other
 
