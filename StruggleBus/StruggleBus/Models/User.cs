@@ -34,7 +34,7 @@ namespace StruggleBus.Models
         [MaxLength(255)]
         public string ImageUrl { get; set; }
 
-        [DataType(DataType.PhoneNumber)]
+        
         [Required]
         public string UserPhone { get; set; }
     }

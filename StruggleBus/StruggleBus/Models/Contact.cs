@@ -18,7 +18,6 @@ namespace StruggleBus.Models
         public string Name { get; set; }
 
         [Required]
-        [DataType(DataType.PhoneNumber)]
         public string ContactPhone { get; set; }
     }
 }

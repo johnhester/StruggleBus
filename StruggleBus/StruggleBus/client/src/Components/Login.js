@@ -30,7 +30,7 @@ export default function Login() {
           <Form.Control id="password" type="password" onChange={e => setPassword(e.target.value)} />
         </Form.Group>
         <Form.Group>
-          <Button>Login</Button>
+          <Button type="submit">Login</Button>
         </Form.Group>
         <em>
           Not registered? <Link to="register">Register</Link>

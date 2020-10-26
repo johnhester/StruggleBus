@@ -24,7 +24,7 @@ CREATE TABLE [User]
   [FirstName] nvarchar(50) NOT NULL,
   [LastName] nvarchar(50) NOT NULL,
   [ImageUrl] nvarchar(255),
-  [UserPhone] nvarchar NOT NULL
+  [UserPhone] nvarchar(15) NOT NULL
 
   Constraint UQ_firebaseUserId UNIQUE(firebaseUserId)
 )
@@ -35,7 +35,7 @@ CREATE TABLE [Contact]
   [Id] int PRIMARY KEY IDENTITY,
   [UserId] int NOT NULL,
   [Name] nvarchar(50) NOT NULL,
-  [ContactPhone] int NOT NULL
+  [ContactPhone] nvarchar(15) NOT NULL
 
     CONSTRAINT [FK_Contact_User] FOREIGN KEY ([userId]) REFERENCES [User]([id])
 
