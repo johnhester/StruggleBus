@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from "react-router-dom";
-import { UserContext } from "../providers/UserProvider";
+import { UserContext } from "../Providers/UserProvider";
 
 export default function Register() {
   const history = useHistory();
@@ -29,19 +29,19 @@ export default function Register() {
       <fieldset>
         <Form.Group>
           <Form.Label htmlFor="name">Name</Form.Label>
-          <Form.Input id="name" type="text" onChange={e => setName(e.target.value)} />
+          <Form.Control id="name" type="text" onChange={e => setName(e.target.value)} />
         </Form.Group>
         <Form.Group>
-          <Form.Label for="email">Email</Form.Label>
-          <Form.Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
+          <Form.Label htmlFor="email">Email</Form.Label>
+          <Form.Control id="email" type="text" onChange={e => setEmail(e.target.value)} />
         </Form.Group>
         <Form.Group>
-          <Form.Label for="password">Password</Form.Label>
-          <Form.Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
+          <Form.Label htmlFor="password">Password</Form.Label>
+          <Form.Control id="password" type="password" onChange={e => setPassword(e.target.value)} />
         </Form.Group>
         <Form.Group>
-          <Form.Label for="confirmPassword">Confirm Password</Form.Label>
-          <Form.Input id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
+          <Form.Label htmlFor="confirmPassword">Confirm Password</Form.Label>
+          <Form.Control id="confirmPassword" type="password" onChange={e => setConfirmPassword(e.target.value)} />
         </Form.Group>
         <Form.Group>
           <Button>Register</Button>
