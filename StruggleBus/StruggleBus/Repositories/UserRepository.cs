@@ -16,10 +16,9 @@ namespace StruggleBus.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT u.Id, u.FirebaseUserId, u.UserName, u.Email, u.FirstName, u.LastName, u.ImageUrl, u.UserPhone
-                               ut.Name AS UserTypeName
-                          FROM User u
-                         WHERE FirebaseUserId = @FirebaseuserId";
+                        SELECT Id, FirebaseUserId, UserName, Email, FirstName, LastName, ImageUrl, UserPhone
+                          FROM [User] 
+                         WHERE FirebaseUserId = @FirebaseUserId";
 
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
 

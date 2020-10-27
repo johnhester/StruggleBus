@@ -26,6 +26,5 @@ namespace StruggleBus
                     webBuilder.UseStartup<Startup>();
                 });
 
-
     }
 }
