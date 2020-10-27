@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using StruggleBus.Models;
 using StruggleBus.Repositories;
 
-namespace WisdomAndGrace.Controllers
+namespace StruggleBus.Controllers
 {
-    [Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
