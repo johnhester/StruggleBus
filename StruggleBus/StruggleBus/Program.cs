@@ -6,9 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-using Twilio.Clients;
+
 
 namespace StruggleBus
 {
@@ -25,6 +23,8 @@ namespace StruggleBus
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+
 
     }
 }
