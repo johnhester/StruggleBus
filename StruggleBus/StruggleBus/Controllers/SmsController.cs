@@ -9,6 +9,8 @@ using Twilio.TwiML;
 using Twilio;
 using Twilio.Types;
 using Twilio.Rest.Api.V2010.Account;
+using Microsoft.AspNetCore.SignalR.Protocol;
+using StruggleBus.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,6 +20,13 @@ namespace StruggleBus.Controllers
     [ApiController]
     public class SmsController : TwilioController
     {
+        private readonly IUserRepository _userRepo;
+
+        public SmsController(IUserRepository userRepository)
+        {
+            _userRepo = userRepository;
+        }
+
         // GET: api/<SmsController>
         [HttpGet]
         public IActionResult Get()
@@ -64,11 +73,12 @@ namespace StruggleBus.Controllers
             return "value";
         }
 
-        [NonAction]
+        [Route("receivesms")]
         public IActionResult ReceiveSms()
         {
+            
             var response = new MessagingResponse();
-            response.Message("It's alive!");
+            response.Message("It's alive and it's saying ");
 
             return TwiML(response);
         }

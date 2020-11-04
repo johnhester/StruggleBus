@@ -30,12 +30,11 @@ namespace StruggleBus.Models
         [MaxLength(50)]
         public string LastName { get; set; }
 
-        [DataType(DataType.Url)]
-        [MaxLength(255)]
-        public string ImageUrl { get; set; }
 
         
         [Required]
+        [DataType(DataType.PhoneNumber)]
+        [MaxLength(15)]
         public string UserPhone { get; set; }
     }
 }

@@ -35,5 +35,19 @@ namespace StruggleBus.Controllers
             return CreatedAtAction(
                 nameof(GetByFirebaseUserId), new { firebaseUserId = user.FirebaseUserId }, user);
         }
+
+        [Authorize]
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, User user)
+        {
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
+
+            _userRepository.Edit(user);
+
+            return NoContent();
+        }
     }
 }

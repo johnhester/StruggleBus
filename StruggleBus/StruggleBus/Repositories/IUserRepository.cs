@@ -6,5 +6,8 @@ namespace StruggleBus.Repositories
     {
         void Add(User user);
         User GetByFirebaseUserId(string firebaseUserId);
+        void Edit(User user);
+        void Remove(int id);
+
     }
 }

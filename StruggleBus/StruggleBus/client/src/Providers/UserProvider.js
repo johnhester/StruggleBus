@@ -6,7 +6,7 @@ import "firebase/auth";
 export const UserContext = createContext();
 
 export function UserProvider(props) {
-  const apiUrl = "https://localhost:5001/api/User";
+  const apiUrl = "/api/user";
 
   const user = sessionStorage.getItem("user");
   const [isLoggedIn, setIsLoggedIn] = useState(user != null);
@@ -47,7 +47,6 @@ export function UserProvider(props) {
   const getToken = () => firebase.auth().currentUser.getIdToken();
 
   const getUser = (firebaseUserId) => {
-    debugger;
     return getToken().then((token) =>
       fetch(`${apiUrl}/${firebaseUserId}`, {
         method: "GET",

@@ -23,7 +23,6 @@ CREATE TABLE [User]
   [Email] nvarchar(255) UNIQUE NOT NULL,
   [FirstName] nvarchar(50) NOT NULL,
   [LastName] nvarchar(50) NOT NULL,
-  [ImageUrl] nvarchar(255),
   [UserPhone] nvarchar(15) NOT NULL
 
   Constraint UQ_firebaseUserId UNIQUE(firebaseUserId)

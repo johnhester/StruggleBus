@@ -30,6 +30,7 @@ namespace StruggleBus
         {
             //transients
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IContactRepository, ContactRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";

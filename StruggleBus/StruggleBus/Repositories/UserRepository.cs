@@ -16,7 +16,7 @@ namespace StruggleBus.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT Id, FirebaseUserId, UserName, Email, FirstName, LastName, ImageUrl, UserPhone
+                        SELECT Id, FirebaseUserId, UserName, Email, FirstName, LastName, UserPhone
                           FROM [User] 
                          WHERE FirebaseUserId = @FirebaseUserId";
 
@@ -52,21 +52,54 @@ namespace StruggleBus.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO User (FirebaseUserId, UserName, Email, FirstName, LastName, ImageUrl, UserPhone)
+                    cmd.CommandText = @"INSERT INTO [User] (FirebaseUserId, UserName, Email, FirstName, LastName, UserPhone)
                                         OUTPUT INSERTED.ID
-                                        VALUES (@FirebaseUserId, @UserName, @Email, @FirstName, @LastName, @ImageUrl, @UserPhone)";
+                                        VALUES (@FirebaseUserId, @UserName, @Email, @FirstName, @LastName, @UserPhone)";
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", user.FirebaseUserId);
                     DbUtils.AddParameter(cmd, "@UserName", user.UserName);
                     DbUtils.AddParameter(cmd, "@Email", user.Email);
                     DbUtils.AddParameter(cmd, "@FirstName", user.FirstName);
                     DbUtils.AddParameter(cmd, "@LastName", user.LastName);
-                    DbUtils.AddParameter(cmd, "@ImageUrl", user.ImageUrl);
                     DbUtils.AddParameter(cmd, "@UserPhone", user.UserPhone);
 
                     user.Id = (int)cmd.ExecuteScalar();
                 }
             }
         } 
+
+        public void Edit(User user)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                       UPDATE [User]
+                       SET
+                        FirebaseUserId = @FirebaseUserId,
+                        UserName = @UserName,
+                        Email = @Email,
+                        FirstName = @FirstName,
+                        LastName = @LastName,
+                        UserPhone = @UserPhone
+                       WHERE
+                        Id = @Id
+                    ";
+
+                    DbUtils.AddParameter(cmd, "@Id", user.Id);
+                    DbUtils.AddParameter(cmd, "@FirebaseUserId", user.FirebaseUserId);
+                    DbUtils.AddParameter(cmd, "@UserName", user.UserName);
+                    DbUtils.AddParameter(cmd, "@Email", user.Email);
+                    DbUtils.AddParameter(cmd, "@FirstName", user.FirstName);
+                    DbUtils.AddParameter(cmd, "@LastName", user.LastName);
+                    DbUtils.AddParameter(cmd, "@UserPhone", user.UserPhone);             
+
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
         
         public void Remove(int id)
         {
