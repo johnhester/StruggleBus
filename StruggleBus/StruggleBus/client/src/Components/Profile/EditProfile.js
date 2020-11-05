@@ -63,6 +63,7 @@ const EditProfile = (props) => {
                             type="text"
                             onChange={(event) => setFirstName(event.target.value)}
                             defaultValue={firstName}
+                            maxLength="50"
                             required></Form.Control>
                     </Form.Group>
                     <Form.Group>
@@ -71,6 +72,7 @@ const EditProfile = (props) => {
                             type="text"
                             onChange={(event) => setLastName(event.target.value)}
                             defaultValue={lastName}
+                            maxLength="50"
                             required></Form.Control>
                     </Form.Group>
                     <Form.Group>
@@ -79,6 +81,7 @@ const EditProfile = (props) => {
                             type="text"
                             onChange={(event) => setUserName(event.target.value)}
                             defaultValue={userName}
+                            maxLength="50"
                             required></Form.Control>
                     </Form.Group>
 
@@ -88,7 +91,9 @@ const EditProfile = (props) => {
                             type="text"
                             onChange={(event) => setUserPhone(event.target.value)}
                             defaultValue={userPhone}
+                            maxLength="15"
                             required></Form.Control>
+                        <Form.Text muted>Please do not use any - or (), and include the country code</Form.Text>
                     </Form.Group>
                     <Form.Group>
                         <Button variant="primary" type="submit">Submit</Button>

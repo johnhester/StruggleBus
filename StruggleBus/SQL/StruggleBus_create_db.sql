@@ -29,28 +29,6 @@ CREATE TABLE [User]
 )
 GO
 
-CREATE TABLE [Contact]
-(
-  [Id] int PRIMARY KEY IDENTITY,
-  [UserId] int NOT NULL,
-  [Name] nvarchar(50) NOT NULL,
-  [ContactPhone] nvarchar(15) NOT NULL
-
-    CONSTRAINT [FK_Contact_User] FOREIGN KEY ([userId]) REFERENCES [User]([id])
-
-)
-GO
-
-CREATE TABLE [FriendJoin]
-(
-  [Id] int PRIMARY KEY IDENTITY,
-  [User1Id] int NOT NULL,
-  [User2Id] int NOT NULL
-
-    CONSTRAINT [FK_FriendJoin_User] FOREIGN KEY ([user1Id]) REFERENCES [User]([id]),
-     FOREIGN KEY ([user2Id]) REFERENCES [User]([id])
-)
-GO
 
 CREATE TABLE [UserMessage]
 (
@@ -60,32 +38,11 @@ CREATE TABLE [UserMessage]
   [InputMessage] nvarchar(25) NOT NULL,
   [OutputMessage] nvarchar(500) NOT NULL
 
-    CONSTRAINT [FK_UserMessage_User] FOREIGN KEY ([userId]) REFERENCES [User]([id]),
-    CONSTRAINT [FK_UserMessage_Contact] FOREIGN KEY ([contactId]) REFERENCES [Contact]([id])
+    CONSTRAINT [FK_UserMessage_User] FOREIGN KEY ([userId]) REFERENCES [User]([id])
+                                    
 
 )
 GO
 
-CREATE TABLE [DefaultMessage]
-(
-  [Id] int PRIMARY KEY IDENTITY,
-  [InputMessage] nvarchar(25) NOT NULL,
-  [OutputMessage] nvarchar(500) NOT NULL
-)
-GO
 
-
-
-CREATE TABLE [DefaultActive]
-(
-  [Id] int PRIMARY KEY IDENTITY,
-  [MessageId] int NOT NULL,
-  [UserId] int NOT NULL,
-  [Active] bit NOt Null
-
-    CONSTRAINT [FK_DefaultActive_User] FOREIGN KEY ([userId]) REFERENCES [User] ([id]),
-    CONSTRAINT [FK_DefaultActive_DefaultMessage] FOREIGN KEY ([messageId]) REFERENCES [DefaultMessage] ([id])
-
-)
-GO
 

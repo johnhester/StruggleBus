@@ -225,10 +225,7 @@ namespace StruggleBus.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                            Delete from FriendJoin Where User1Id = @id OR User2Id = @id
-                            Delete from DefaultActive Where UserId = @id
-                            Delete from Contact Where UserId = @id
-                            Delete from UserMessages Where UserId = @id
+                            Delete from UserMessage Where UserId = @id
                             Delete from User Where id = @id
                             ";
                     DbUtils.AddParameter(cmd, "@id", id);

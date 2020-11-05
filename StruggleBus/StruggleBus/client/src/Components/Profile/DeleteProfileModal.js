@@ -12,7 +12,7 @@ const DeleteProfileModal = (props) => {
             </Modal.Header>
             <Modal.Body> Are you sure? This action can not be undone.</Modal.Body>
             <Modal.Footer>
-                <Button>Delete</Button>
+                <Button onClick={props.handleDelete}>Delete</Button>
                 <Button onClick={props.handleClose}>Cancel</Button>
             </Modal.Footer>
         </Modal>

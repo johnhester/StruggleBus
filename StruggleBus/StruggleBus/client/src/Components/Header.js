@@ -13,7 +13,7 @@ export default function Header() {
 
     return (
         <Navbar bg="dark" variant="dark" sticky="top" expand="lg">
-            <Navbar.Brand>Struggle Bus</Navbar.Brand>
+            <Navbar.Brand onClick={() => history.push("/")}>Struggle Bus</Navbar.Brand>
             {isLoggedIn ?
                 <Nav className="mr-auto">
                     <Nav.Link onClick={() => history.push("/profile")}>Profile</Nav.Link>

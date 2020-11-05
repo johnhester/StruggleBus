@@ -62,5 +62,13 @@ namespace StruggleBus.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _userRepository.Remove(id);
+
+            return NoContent();
+        }
     }
 }
