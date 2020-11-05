@@ -17,7 +17,7 @@ export default function Header() {
             {isLoggedIn ?
                 <Nav className="mr-auto">
                     <Nav.Link onClick={() => history.push("/profile")}>Profile</Nav.Link>
-                    <Nav.Link>Messages</Nav.Link>
+                    <Nav.Link onClick={() => history.push("/messages")}>Messages</Nav.Link>
                     <Nav.Link onClick={logout}>Logout</Nav.Link>
                 </Nav>
                 :

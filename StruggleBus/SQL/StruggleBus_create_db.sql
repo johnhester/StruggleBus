@@ -34,9 +34,7 @@ CREATE TABLE [UserMessage]
 (
   [Id] int PRIMARY KEY IDENTITY,
   [UserId] int NOT NULL,
-  [ContactId] int NOT NULL,
-  [InputMessage] nvarchar(25) NOT NULL,
-  [OutputMessage] nvarchar(500) NOT NULL
+  [Message] nvarchar(500) NOT NULL
 
     CONSTRAINT [FK_UserMessage_User] FOREIGN KEY ([userId]) REFERENCES [User]([id])
                                     

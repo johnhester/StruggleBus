@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import { UserContext, UserProvider } from "../Providers/UserProvider.js";
-import { MessageProvider } from "../Providers/MessageProvider";
+import { UserContext } from "../Providers/UserProvider.js";
+import MessageIndex from "./Messages/MessageIndex";
 import DashBoard from "./Home/DashBoard";
 import ProfileDetails from "./Profile/ProfileDetails";
 import EditProfile from "./Profile/EditProfile";
@@ -13,6 +13,12 @@ export default function ApplicationViews() {
     //modularize views
 
     const views = [
+        {
+            name: "Message Index",
+            component: withRouter(MessageIndex),
+            path: "/messages",
+            to: "/login"
+        },
         {
             name: "DashBoard",
             component: withRouter(DashBoard),

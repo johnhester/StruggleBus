@@ -25,10 +25,11 @@ namespace StruggleBus.Controllers
     public class SmsController : TwilioController
     {
         private readonly IUserRepository _userRepo;
-
-        public SmsController(IUserRepository userRepository)
+        private readonly IMessageRepository _messageRepo;
+        public SmsController(IUserRepository userRepository, IMessageRepository messageRepository)
         {
             _userRepo = userRepository;
+            _messageRepo = messageRepository;
         }
 
         // GET: api/<SmsController>
@@ -58,6 +59,15 @@ namespace StruggleBus.Controllers
 
             var user = _userRepo.GetByPhoneNumber(inboundPhone);
             user.ContactMessage = requestBody;
+
+            //logs inbound message in database
+            UserMessage message = new UserMessage()
+            {
+                UserId = user.Id,
+                Message = requestBody
+            };
+
+            _messageRepo.Add(message);
 
 
             if (user == null)

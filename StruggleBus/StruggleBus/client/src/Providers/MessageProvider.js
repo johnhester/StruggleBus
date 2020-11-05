@@ -11,9 +11,9 @@ export function MessageProvider(props) {
     const [messages, setMessages] = useState([]);
     const history = useHistory();
 
-    const getMessagesByUserPhone = (userPhone) => {
+    const getMessagesByUserId = (userId) => {
         return getToken().then((token) =>
-            fetch(`${apiUrl}/${userPhone}`, {
+            fetch(`${apiUrl}/${userId}`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -23,7 +23,7 @@ export function MessageProvider(props) {
     }
 
     return (
-        <MessageContext.Provider value={{ messages, setMessages, getMessagesByUserPhone }}>
+        <MessageContext.Provider value={{ messages, setMessages, getMessagesByUserId }}>
             {props.children}
         </MessageContext.Provider>
     )

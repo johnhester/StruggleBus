@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StruggleBus.Models;
+using StruggleBus.Repositories;
 using Twilio;
 using Twilio.AspNet.Core;
 using Twilio.Rest.Api.V2010.Account;
@@ -14,25 +16,20 @@ namespace StruggleBus.Controllers
     [ApiController]
     public class MessageController : TwilioController
     {
-        [HttpGet("{phone}")]
-        public IActionResult getUserMessages(string phone)
+        private readonly IMessageRepository _messageRepo;
+        public MessageController(IMessageRepository messageRepository)
         {
-            //grab twilio authentication environment variables
-            var TwilioSID = Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID");
-            var TwilioAuthToken = Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN");
+            _messageRepo = messageRepository;
+        }
 
-            TwilioClient.Init(TwilioSID, TwilioAuthToken);
-
-            var messages = MessageResource.Read(from: new Twilio.Types.PhoneNumber(phone));
+        [HttpGet("{userId}")]
+        public IActionResult getUserMessages(int userId)
+        {
+            List<UserMessage> messages = _messageRepo.getUserMessages(userId);
 
             if (messages == null)
             {
                 return NotFound();
-            }
-
-            foreach(var item in messages)
-            {
-                Console.WriteLine(item);
             }
 
             return Ok(messages);
