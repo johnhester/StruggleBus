@@ -28,6 +28,18 @@ namespace StruggleBus.Controllers
             return Ok(user);
         }
 
+        [HttpGet("{userId}")]
+        public IActionResult GetByUserId(int userId)
+        {
+            var user = _userRepository.GetById(userId);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
         [HttpPost]
         public IActionResult Register(User user)
         {

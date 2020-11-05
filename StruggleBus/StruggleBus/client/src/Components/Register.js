@@ -11,7 +11,6 @@ export default function Register() {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [userName, setUserName] = useState();
-  const [imageUrl, setImageUrl] = useState();
   const [userPhone, setUserPhone] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -22,7 +21,7 @@ export default function Register() {
     if (password && password !== confirmPassword) {
       alert("Passwords don't match. Please try again.");
     } else {
-      const user = { firstName, lastName, userName, imageUrl, userPhone, email };
+      const user = { firstName, lastName, userName, userPhone, email };
       register(user, password)
         .then(() => history.push("/"))
         .catch(() => alert("Error submitting. Try again."));
@@ -43,11 +42,6 @@ export default function Register() {
         <Form.Group>
           <Form.Label>User Name: </Form.Label>
           <Form.Control id="userName" type="text" onChange={e => setUserName(e.target.value)} required maxLength="50" />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Profile Image Url: </Form.Label>
-          <Form.Control id="imageUrl" type="text" onChange={e => setImageUrl(e.target.value)} maxLength="255" />
-          <Form.Text className="text-muted">Optional</Form.Text>
         </Form.Group>
         <Form.Group>
           <Form.Label>Mobile Phone Number: </Form.Label>

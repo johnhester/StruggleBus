@@ -35,40 +35,9 @@ namespace StruggleBus.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            string accountSid = "AC85e55decc6115b58491e69da3a83ef01";
-            string authToken = "ae609351400d4c90b356767c1002e117";
-
-            TwilioClient.Init(accountSid, authToken);
-
-            var to = new PhoneNumber("+12567623851");
-            var from = new PhoneNumber("+18476076770");
-
-            var message = MessageResource.Create(
-                to: to,
-                from: from,
-                body: "teeeeeest");
-
-            return Content(message.Sid);
+            return NoContent();
         }
 
-        //[HttpGet("sms")]
-        //public IActionResult SendSms()
-        //{
-        //    string accountSid = "AC85e55decc6115b58491e69da3a83ef01";
-        //    string authToken = "ae609351400d4c90b356767c1002e117";
-
-        //    TwilioClient.Init(accountSid, authToken);
-
-        //    var to = new PhoneNumber("+12567623851");
-        //    var from = new PhoneNumber("+18476076770");
-
-        //    var message = MessageResource.Create(
-        //        to: to,
-        //        from: from,
-        //        body: "are we live?");
-
-        //    return Content(message.Sid);
-        //}
 
         // GET api/<SmsController>/5
         [HttpGet("{id}")]
@@ -137,7 +106,7 @@ namespace StruggleBus.Controllers
             var to = new PhoneNumber(contact.UserPhone);
             var from = new PhoneNumber("+18476076770");
 
-            string body = $"Hi {contact.FirstName}! It's Struggle Bus. {user.FirstName} is having a tough time. Could you check in on them at {user.UserPhone}? Their outreach message was: {user.ContactMessage}";
+            string body = $"Hi {contact.FirstName}! It's Struggle Bus. {user.FirstName} is having a tough time. Could you check in on them at {user.UserPhone}? Their outreach message was: '{user.ContactMessage}'";
 
             var message = MessageResource.Create(
                 to: to,

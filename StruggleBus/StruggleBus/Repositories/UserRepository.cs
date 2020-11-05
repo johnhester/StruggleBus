@@ -82,6 +82,43 @@ namespace StruggleBus.Repositories
                 }
             }
         }
+        
+        public User GetById(int userId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, FirebaseUserId, UserName, Email, FirstName, LastName, UserPhone
+                          FROM [User] 
+                         WHERE Id = @userId";
+
+                    DbUtils.AddParameter(cmd, "@userId", userId);
+
+                    User user = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        user = new User()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
+                            UserName = DbUtils.GetString(reader, "UserName"),
+                            Email = DbUtils.GetString(reader, "Email"),
+                            FirstName = DbUtils.GetString(reader, "FirstName"),
+                            LastName = DbUtils.GetString(reader, "LastName"),
+                            UserPhone = DbUtils.GetString(reader, "UserPhone")
+                        };
+                    }
+                    reader.Close();
+
+                    return user;
+                }
+            }
+        }
 
         public List<User> GetAllButCurrent(int userId)
         {

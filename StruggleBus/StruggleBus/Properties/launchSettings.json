@@ -21,7 +21,7 @@
       "commandName": "Project",
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "TWILIO_AUTH_TOKEN": "ae609351400d4c90b356767c1002e117",
+        "TWILIO_AUTH_TOKEN": "f9b6750fd4255b23cb143089d94ab4f1",
         "ASPNETCORE_ENVIRONMENT": "Development",
         "TWILIO_ACCOUNT_SID": "AC85e55decc6115b58491e69da3a83ef01"
       },

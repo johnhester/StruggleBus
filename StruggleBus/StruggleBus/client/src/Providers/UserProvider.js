@@ -47,6 +47,7 @@ export function UserProvider(props) {
   const getToken = () => firebase.auth().currentUser.getIdToken();
 
   const getUser = (firebaseUserId) => {
+    debugger;
     return getToken().then((token) =>
       fetch(`${apiUrl}/${firebaseUserId}`, {
         method: "GET",
@@ -68,8 +69,18 @@ export function UserProvider(props) {
       }).then(resp => resp.json()));
   };
 
+  const getById = (userId) => {
+    return getToken().then((token) =>
+      fetch(`${apiUrl}/${userId}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }).then(resp => resp.json()))
+  }
+
   return (
-    <UserContext.Provider value={{ isLoggedIn, login, logout, register, getToken }}>
+    <UserContext.Provider value={{ isLoggedIn, login, logout, register, getToken, getById }}>
       {isFirebaseReady
         ? props.children
         : <Spinner className="app-spinner dark" />}

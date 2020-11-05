@@ -16,13 +16,7 @@ namespace StruggleBus.Utils
     {
         //a utility for extra sms responses
         //help response
-        //test response
-        public MessagingResponse Test(MessagingResponse response) {
 
-            response.Message("Testing...1...2...3...");
-
-            return response;
-        }
 
         //get random user from currently existing users
         public static User getRandomUser(List<User> users)

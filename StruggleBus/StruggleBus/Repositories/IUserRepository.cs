@@ -8,6 +8,7 @@ namespace StruggleBus.Repositories
         void Add(User user);
         User GetByFirebaseUserId(string firebaseUserId);
         User GetByPhoneNumber(string phoneNumber);
+        User GetById(int userId);
         List<User> GetAllButCurrent(int userId);
         void Edit(User user);
         void Remove(int id);
