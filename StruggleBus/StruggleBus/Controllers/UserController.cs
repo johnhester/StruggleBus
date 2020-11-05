@@ -28,8 +28,9 @@ namespace StruggleBus.Controllers
             return Ok(user);
         }
 
-        [HttpGet("{userId}")]
-        public IActionResult GetByUserId(int userId)
+        [Authorize]
+        [HttpGet("details/{userId}")]
+        public IActionResult GetUserById(int userId)
         {
             var user = _userRepository.GetById(userId);
             if (user == null)

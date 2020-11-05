@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { UserContext } from "../Providers/UserProvider.js";
 import DashBoard from "./Home/DashBoard";
+import ProfileDetails from "./Profile/ProfileDetails";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -15,6 +16,13 @@ export default function ApplicationViews() {
             provider: "UserProvider",
             component: withRouter(DashBoard),
             path: "/",
+            to: "/login"
+        },
+        {
+            name: "User Details",
+            provider: "UserProvider",
+            component: withRouter(ProfileDetails),
+            pather: "/profile/:userId",
             to: "/login"
         }
     ]

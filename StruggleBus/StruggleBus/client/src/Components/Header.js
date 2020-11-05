@@ -1,20 +1,29 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from "../Providers/UserProvider";
-import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import { Nav } from 'react-bootstrap';
 
 
 export default function Header() {
     const { isLoggedIn, logout } = useContext(UserContext);
+    const history = useHistory();
+    const [userId, setUserId] = useState();
+    const user = JSON.parse(sessionStorage.user);
+
+    useEffect(() => {
+        if (user != null) {
+            setUserId(user.id)
+        }
+    }, [])
 
     return (
-        <header>
+        <Header>
             <Navbar variant="dark" bg="primary" fixed="top" expand="lg">
                 <Navbar.Brand>Struggle Bus</Navbar.Brand>
                 {isLoggedIn ?
                     <Nav className="mr-auto">
-                        <Nav.Link>Profile</Nav.Link>
+                        <Nav.Link onClick={() => history.push(`/profile/${userId}`)}>Profile</Nav.Link>
                         <Nav.Link>Messages</Nav.Link>
                         <Nav.Link onClick={logout}>Logout</Nav.Link>
                     </Nav>
@@ -26,6 +35,6 @@ export default function Header() {
                 }
 
             </Navbar>
-        </header>
+        </Header>
     );
 }

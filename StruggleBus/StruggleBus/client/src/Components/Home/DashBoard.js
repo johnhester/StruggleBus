@@ -5,7 +5,7 @@ const DashBoard = (props) => {
 
     return (
         <>
-            <h1>Welcome to Reach</h1>
+            <h1>Welcome to StruggleBus</h1>
         </>
     )
 }
