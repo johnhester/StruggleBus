@@ -12,7 +12,8 @@ namespace StruggleBus.Controllers
     {
         private readonly IUserRepository _userRepository;
         public UserController(IUserRepository userRepository)
-        {
+        {   
+
             _userRepository = userRepository;
         }
 
@@ -32,8 +33,7 @@ namespace StruggleBus.Controllers
         {
             
             _userRepository.Add(user);
-            return CreatedAtAction(
-                nameof(GetByFirebaseUserId), new { firebaseUserId = user.FirebaseUserId }, user);
+            return CreatedAtAction(nameof(GetByFirebaseUserId), new { firebaseUserId = user.FirebaseUserId }, user);
         }
 
         [Authorize]

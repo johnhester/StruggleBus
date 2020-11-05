@@ -36,5 +36,7 @@ namespace StruggleBus.Models
         [DataType(DataType.PhoneNumber)]
         [MaxLength(15)]
         public string UserPhone { get; set; }
+
+        public string ContactMessage { get; set; }
     }
 }

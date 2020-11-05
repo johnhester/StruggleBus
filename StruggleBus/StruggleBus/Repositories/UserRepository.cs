@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using StruggleBus.Models;
 using StruggleBus.Utils;
+using System.Collections.Generic;
 
 namespace StruggleBus.Repositories
 {
@@ -41,6 +42,84 @@ namespace StruggleBus.Repositories
                     reader.Close();
 
                     return user;
+                }
+            }
+        }
+
+        public User GetByPhoneNumber(string phoneNumber)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, FirebaseUserId, UserName, Email, FirstName, LastName, UserPhone
+                          FROM [User] 
+                         WHERE UserPhone = @phoneNumber";
+
+                    DbUtils.AddParameter(cmd, "@phoneNumber", phoneNumber);
+
+                    User user = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        user = new User()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
+                            UserName = DbUtils.GetString(reader, "UserName"),
+                            Email = DbUtils.GetString(reader, "Email"),
+                            FirstName = DbUtils.GetString(reader, "FirstName"),
+                            LastName = DbUtils.GetString(reader, "LastName"),
+                            UserPhone = DbUtils.GetString(reader, "UserPhone")
+                        };
+                    }
+                    reader.Close();
+
+                    return user;
+                }
+            }
+        }
+
+        public List<User> GetAllButCurrent(int userId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, FirebaseUserId, UserName, Email, FirstName, LastName, UserPhone
+                          FROM [User] 
+                         WHERE Id != @userId";
+
+                    DbUtils.AddParameter(cmd, "@userId", userId);
+
+                    
+
+                    var users = new List<User>();
+
+                    var reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var user = new User()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
+                            UserName = DbUtils.GetString(reader, "UserName"),
+                            Email = DbUtils.GetString(reader, "Email"),
+                            FirstName = DbUtils.GetString(reader, "FirstName"),
+                            LastName = DbUtils.GetString(reader, "LastName"),
+                            UserPhone = DbUtils.GetString(reader, "UserPhone")
+                        };
+
+                        users.Add(user);
+                    }
+                    reader.Close();
+
+                    return users;
                 }
             }
         }

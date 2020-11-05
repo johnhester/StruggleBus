@@ -1,3 +1,3 @@
-﻿SELECT Id, FirebaseUserId, UserName, Email, FirstName, LastName, ImageUrl, UserPhone
+﻿SELECT Id, FirebaseUserId, UserName, Email, FirstName, LastName, UserPhone
 FROM [User] 
-WHERE FirebaseUserId = 't9p88AmJUZUSDQusCW366vjqNHd2';
+WHERE Id !=  2;
