@@ -3,7 +3,8 @@ import { UserContext } from "../../Providers/UserProvider";
 import { Link, useHistory } from "react-router-dom"
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
-
+import Button from 'react-bootstrap/Button'
+import Table from 'react-bootstrap/Table'
 
 
 const ProfileDetails = (props) => {
@@ -25,14 +26,45 @@ const ProfileDetails = (props) => {
     }
 
     useEffect(() => {
-        const user = JSON.parse(props.match.params.id)
+        const user = JSON.parse(sessionStorage.getItem('user'))
         getUser(user.id);
     }, [])
 
     return (
         <Container>
             <Card>
-                <h1>test</h1>
+                <Card.Header><h1>User Profile Details</h1></Card.Header>
+                <Card.Body>
+                    <Table bordered hover striped className="p-5">
+                        <tbody>
+                            <tr>
+                                <th>First Name:</th>
+                                <td>{user.firstName}</td>
+                            </tr>
+                            <tr>
+                                <th>Last Name:</th>
+                                <td>{user.lastName}</td>
+                            </tr>
+                            <tr>
+                                <th>UserName:</th>
+                                <td>{user.userName}</td>
+                            </tr>
+                            <tr>
+                                <th>Email:</th>
+                                <td>{user.email}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone Number:</th>
+                                <td>{user.userPhone}</td>
+                            </tr>
+
+                        </tbody>
+                    </Table>
+                </Card.Body>
+                <Card.Footer>
+                    <Button variant="primary">Edit Profile</Button>
+                    <Button variant="danger">Delete Profile</Button>
+                </Card.Footer>
             </Card>
         </Container>
     )

@@ -73,7 +73,7 @@ export function UserProvider(props) {
       fetch(`${apiUrl}/details/${userId}`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`
         }
       }).then(res => res.json()))
   }

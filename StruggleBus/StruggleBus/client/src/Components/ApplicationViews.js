@@ -13,18 +13,17 @@ export default function ApplicationViews() {
     const views = [
         {
             name: "DashBoard",
-            provider: "UserProvider",
             component: withRouter(DashBoard),
             path: "/",
             to: "/login"
         },
         {
             name: "User Details",
-            provider: "UserProvider",
             component: withRouter(ProfileDetails),
-            pather: "/profile/:userId",
+            pather: "/profile",
             to: "/login"
-        }
+        },
+
     ]
 
     const { isLoggedIn } = useContext(UserContext);
@@ -33,9 +32,7 @@ export default function ApplicationViews() {
     const routes = views.map((element, index) => {
         return (
             <Route key={index} path={element.path} exact>
-                <element.provider>
-                    {isLoggedIn ? <element.component /> : <Redirect to={element.to} />}
-                </element.provider>
+                {isLoggedIn ? <element.component /> : <Redirect to={element.to} />}
             </Route>
         )
     })
