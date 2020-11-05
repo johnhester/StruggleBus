@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { UserContext } from "../Providers/UserProvider.js";
 import DashBoard from "./Home/DashBoard";
 import ProfileDetails from "./Profile/ProfileDetails";
+import EditProfile from "./Profile/EditProfile";
 import Login from "./Login";
 import Register from "./Register";
 
@@ -20,9 +21,15 @@ export default function ApplicationViews() {
         {
             name: "User Details",
             component: withRouter(ProfileDetails),
-            pather: "/profile",
+            path: "/profile",
             to: "/login"
         },
+        {
+            name: "Edit Profile",
+            component: withRouter(EditProfile),
+            path: "/profile/edit",
+            to: "login"
+        }
 
     ]
 

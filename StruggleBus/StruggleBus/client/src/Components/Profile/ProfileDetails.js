@@ -31,7 +31,7 @@ const ProfileDetails = (props) => {
     }, [])
 
     return (
-        <Container>
+        <Container className="mt-3">
             <Card>
                 <Card.Header><h1>User Profile Details</h1></Card.Header>
                 <Card.Body>
@@ -62,8 +62,8 @@ const ProfileDetails = (props) => {
                     </Table>
                 </Card.Body>
                 <Card.Footer>
-                    <Button variant="primary">Edit Profile</Button>
-                    <Button variant="danger">Delete Profile</Button>
+                    <Button variant="primary" className="mr-2" onClick={() => { history.push("/profile/edit") }}>Edit Profile</Button>
+                    <Button variant="danger" >Delete Profile</Button>
                 </Card.Footer>
             </Card>
         </Container>

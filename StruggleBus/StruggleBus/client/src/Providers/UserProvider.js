@@ -78,8 +78,21 @@ export function UserProvider(props) {
       }).then(res => res.json()))
   }
 
+  const editUser = (user) => {
+    return getToken().then((token) =>
+      fetch(`${apiUrl}/${user.id}`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+      })
+    )
+  }
+
   return (
-    <UserContext.Provider value={{ isLoggedIn, login, logout, register, getToken, getById }}>
+    <UserContext.Provider value={{ isLoggedIn, login, logout, register, getToken, getById, editUser }}>
       {isFirebaseReady
         ? props.children
         : <Spinner className="app-spinner dark" />}

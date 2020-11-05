@@ -12,7 +12,7 @@ export default function Header() {
 
 
     return (
-        <Navbar variant="dark" bg="primary" sticky="top" expand="lg">
+        <Navbar bg="dark" variant="dark" sticky="top" expand="lg">
             <Navbar.Brand>Struggle Bus</Navbar.Brand>
             {isLoggedIn ?
                 <Nav className="mr-auto">
