@@ -26,7 +26,8 @@ const ProfileDetails = (props) => {
     const handleShow = () => setShow(true);
 
     const handleDelete = () => {
-        deleteUser(user.id).then(() => logout)
+        handleClose();
+        deleteUser(user.id).then(() => logout());
     }
 
     const getUser = async (id) => {

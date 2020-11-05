@@ -226,7 +226,7 @@ namespace StruggleBus.Repositories
                 {
                     cmd.CommandText = @"
                             Delete from UserMessage Where UserId = @id
-                            Delete from User Where id = @id
+                            Delete from [User] Where id = @id
                             ";
                     DbUtils.AddParameter(cmd, "@id", id);
 

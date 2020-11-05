@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import { UserContext } from "../Providers/UserProvider.js";
+import { UserContext, UserProvider } from "../Providers/UserProvider.js";
+import { MessageProvider } from "../Providers/MessageProvider";
 import DashBoard from "./Home/DashBoard";
 import ProfileDetails from "./Profile/ProfileDetails";
 import EditProfile from "./Profile/EditProfile";
@@ -39,7 +40,9 @@ export default function ApplicationViews() {
     const routes = views.map((element, index) => {
         return (
             <Route key={index} path={element.path} exact>
+
                 {isLoggedIn ? <element.component /> : <Redirect to={element.to} />}
+
             </Route>
         )
     })
