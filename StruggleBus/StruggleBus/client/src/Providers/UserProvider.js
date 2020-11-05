@@ -91,8 +91,19 @@ export function UserProvider(props) {
     )
   }
 
+  const deleteUser = (id) => {
+    return getToken().then((token) =>
+      fetch(`${apiUrl}/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+    )
+  }
+
   return (
-    <UserContext.Provider value={{ isLoggedIn, login, logout, register, getToken, getById, editUser }}>
+    <UserContext.Provider value={{ isLoggedIn, login, logout, register, getToken, getById, editUser, deleteUser }}>
       {isFirebaseReady
         ? props.children
         : <Spinner className="app-spinner dark" />}

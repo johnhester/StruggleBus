@@ -22,8 +22,8 @@ export default function Header() {
                 </Nav>
                 :
                 <Nav>
-                    <Nav.Link>Login</Nav.Link>
-                    <Nav.Link>Register</Nav.Link>
+                    <Nav.Link onClick={() => history.push("/login")}>Login</Nav.Link>
+                    <Nav.Link onClick={() => history.push("/register")}>Register</Nav.Link>
                 </Nav>
             }
 

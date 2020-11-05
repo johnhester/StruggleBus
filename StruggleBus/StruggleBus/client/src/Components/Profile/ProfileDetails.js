@@ -5,10 +5,11 @@ import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'
 import Table from 'react-bootstrap/Table'
+import DeleteProfileModal from './DeleteProfileModal';
 
 
 const ProfileDetails = (props) => {
-    const { getById } = useContext(UserContext);
+    const { getById, deleteUser, logout } = useContext(UserContext);
     const history = useHistory();
     const [user, setUser] = useState({
         id: 0,
@@ -18,6 +19,15 @@ const ProfileDetails = (props) => {
         email: "GonBUrnya@hotmail.com",
         userPhone: "+15555555555"
     })
+
+    //for delete modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const handleDelete = () => {
+        deleteUser(user.id).then(() => logout)
+    }
 
     const getUser = async (id) => {
         let result = await getById(id);
@@ -63,9 +73,10 @@ const ProfileDetails = (props) => {
                 </Card.Body>
                 <Card.Footer>
                     <Button variant="primary" className="mr-2" onClick={() => { history.push("/profile/edit") }}>Edit Profile</Button>
-                    <Button variant="danger" >Delete Profile</Button>
+                    <Button variant="danger" onClick={handleShow}>Delete Profile</Button>
                 </Card.Footer>
             </Card>
+            <DeleteProfileModal show={show} handleClose={handleClose} handleDelete={handleDelete} />
         </Container>
     )
 }
