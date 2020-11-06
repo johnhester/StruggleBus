@@ -22,11 +22,13 @@ const MessageIndex = (props) => {
         <Container className="mt-5">
             <h1>User Messages</h1>
             <Table bordered striped hover>
-                {messages.map(message =>
-                    <tr key={message.id}>
-                        <td>{message.message}</td>
-                    </tr>
-                )}
+                <tbody>
+                    {messages.map(message =>
+                        <tr key={message.id}>
+                            <td>{message.message}</td>
+                        </tr>
+                    )}
+                </tbody>
             </Table>
         </Container>
     )

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from "../../Providers/UserProvider";
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import Card from 'react-bootstrap/Card'
 import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button'

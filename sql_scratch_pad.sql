@@ -1,3 +1,4 @@
-﻿SELECT Id, FirebaseUserId, UserName, Email, FirstName, LastName, UserPhone
-FROM [User] 
-WHERE Id !=  2;
+﻿SELECT Id, UserId, Message
+FROM UserMessage 
+WHERE UserId = 1
+ORDER BY Id Desc;

@@ -53,7 +53,12 @@ export function UserProvider(props) {
         headers: {
           Authorization: `Bearer ${token}`
         }
-      }).then(resp => resp.json()));
+      }).then((resp) => {
+        if (resp.ok === false) {
+          throw new Error("Invalid email or password");
+        }
+        return resp.json();
+      }));
   };
 
   const saveUser = (user) => {

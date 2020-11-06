@@ -21,8 +21,9 @@ namespace StruggleBus.Repositories
                 {
                     cmd.CommandText = @"
                         SELECT Id, UserId, Message
-                          FROM UserMessage 
-                         WHERE UserId = @userId";
+                        FROM UserMessage 
+                        WHERE UserId = @userId
+                        ORDER BY Id Desc";
 
                     DbUtils.AddParameter(cmd, "@userId", userId);
 
